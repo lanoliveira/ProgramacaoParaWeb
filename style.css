@@ -830,3 +830,5 @@ main a video {
 }
 
 .none { display: none; }
+
+a { cursor:pointer; }
