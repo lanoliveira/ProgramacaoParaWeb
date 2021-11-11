@@ -9,6 +9,7 @@ dialog {
     border-color: rgb(0 0 0 / 6%);
     z-index: 9;
    }
+   
    dialog button {
        padding: 8px 6px;
        position: absolute;
@@ -23,6 +24,7 @@ dialog {
        line-height: 20px;
        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
    }
+
    dialog p {
        display: block;
        padding-left: 20px;
