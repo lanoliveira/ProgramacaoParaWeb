@@ -71,9 +71,9 @@ formSearch.addEventListener('submit', (ev) => {
 
 searchImput.addEventListener('keyup', function (e) {
     if (e.keyCode === 13) {
-        if (searchImput.value.length > 2)
+        if (searchImput.value.length > 2){
             getBusca();
-        else {
+        } else {
             backDialog.className = 'backDialog';
             getError.innerHTML = 'Please enter 2 or more characters';
             dialogShow();
@@ -85,7 +85,6 @@ searchImput.addEventListener('keyup', function (e) {
 
 async function getBusca() {
     let json = await axios.get('https://pixabay.com/api/?key=24231893-90c8178f8275c01f0c83fc75b&q=' + searchImput.value + '&image_type=photo' + '/json');
-    console.log(json.data);
 
     if (json.data.total != 0) {
         for (var i = 0; i < 8; i++) {
@@ -113,7 +112,6 @@ async function getBusca() {
 async function getData() {
 
     let json = await axios.get('https://reqres.in/api/users?page=1' + '/json');
-    console.log(json.data.data);
 
     for (var i = 0; i < json.data.data.length; i++) {
         if (json.data.data[i].email == data.email) {
@@ -141,7 +139,6 @@ function postData(data) {
                 form.elements['password'].value = '';
             }
         } else {
-            console.log(request.response);
             localStorage.setItem('token', request.response.token);
             getData(data);
         }
