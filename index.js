@@ -37,13 +37,13 @@ searchIcon.addEventListener('click', function () {
 function btSubmit() {
     data = { email: form.elements['email'].value, password: form.elements['password'].value };
     //data = { email: "eve.holt@reqres.in", password: "cityslicka" };
-    if ( form.elements['email'].value.length > 2 && form.elements['password'].value.length > 2 ){
+    if (form.elements['email'].value.length > 2 && form.elements['password'].value.length > 2) {
         postData(data);
-    } else if (form.elements['email'].value.length < 3 && form.elements['password'].value.length < 3 ){
+    } else if (form.elements['email'].value.length < 3 && form.elements['password'].value.length < 3) {
         backDialog.className = 'backDialog';
         getError.innerHTML = 'The email and password must contain a minimum of 3 characters';
         dialogShow();
-    } else if (form.elements['email'].value.length < 3 )   {
+    } else if (form.elements['email'].value.length < 3) {
         backDialog.className = 'backDialog';
         getError.innerHTML = 'The email must contain a minimum of 3 characters';
         dialogShow();
@@ -55,7 +55,7 @@ function btSubmit() {
 
 };
 
-function dialogShow(){
+function dialogShow() {
     dialog.setAttribute('style', 'display: flex;');
 }
 
