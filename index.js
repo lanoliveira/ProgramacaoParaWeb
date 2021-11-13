@@ -75,7 +75,7 @@ searchImput.addEventListener('keyup', function (e) {
             getBusca();
         } else {
             backDialog.className = 'backDialog';
-            getError.innerHTML = 'Please enter 2 or more characters';
+            getError.innerHTML = 'Please enter 3 or more characters';
             dialogShow();
         }
     }
