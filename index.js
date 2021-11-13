@@ -37,11 +37,30 @@ searchIcon.addEventListener('click', function () {
 function btSubmit() {
     data = { email: form.elements['email'].value, password: form.elements['password'].value };
     //data = { email: "eve.holt@reqres.in", password: "cityslicka" };
-    postData(data);
+    if ( form.elements['email'].value.length > 2 && form.elements['password'].value.length > 2 ){
+        postData(data);
+    } else if (form.elements['email'].value.length < 3 && form.elements['password'].value.length < 3 ){
+        backDialog.className = 'backDialog';
+        getError.innerHTML = 'The email and password must contain a minimum of 3 characters';
+        dialogShow();
+    } else if (form.elements['email'].value.length < 3 )   {
+        backDialog.className = 'backDialog';
+        getError.innerHTML = 'The email must contain a minimum of 3 characters';
+        dialogShow();
+    } else {
+        backDialog.className = 'backDialog';
+        getError.innerHTML = 'The password must contain a minimum of 3 characters';
+        dialogShow();
+    }
+
 };
 
+function dialogShow(){
+    dialog.setAttribute('style', 'display: flex;');
+}
+
 function btCloseDialog() {
-    dialog.close();
+    dialog.removeAttribute('style');
     backDialog.removeAttribute('class');
     searchImput.value = '';
 }
@@ -52,7 +71,13 @@ formSearch.addEventListener('submit', (ev) => {
 
 searchImput.addEventListener('keyup', function (e) {
     if (e.keyCode === 13) {
-        getBusca();
+        if (searchImput.value.length > 2)
+            getBusca();
+        else {
+            backDialog.className = 'backDialog';
+            getError.innerHTML = 'Please enter 2 or more characters';
+            dialogShow();
+        }
     }
 });
 
@@ -81,7 +106,7 @@ async function getBusca() {
     } else {
         backDialog.className = 'backDialog';
         getError.innerHTML = 'No data found';
-        dialog.show();
+        dialogShow();
     }
 };
 
@@ -110,7 +135,7 @@ function postData(data) {
         if (request.status >= 400) {
             backDialog.className = 'backDialog';
             getError.innerHTML = request.response.error;
-            dialog.show();
+            dialogShow();
             if (request.response.error === 'user not found') {
                 form.elements['email'].value = '';
                 form.elements['password'].value = '';
